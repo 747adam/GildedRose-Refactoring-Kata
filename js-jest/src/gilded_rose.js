@@ -41,15 +41,6 @@ class Shop {
           item.quality = decreaseQuality(item.quality)
         }
       }
-
-      if (item.sellIn < 0) {
-        if (item.name === 'Aged Brie') {
-        } else {
-          if (item.name === 'Backstage passes to a TAFKAL80ETC concert') {
-          } else {
-          }
-        }
-      }
     }
 
     return this.items;
