@@ -17,36 +17,52 @@ class Shop {
       }
 
       if (item.name === 'Aged Brie') {
-        item.sellIn = item.sellIn - 1;
-        item.quality = increaseQuality(item.quality)
-        if (item.sellIn < 0) {
-          item.quality = increaseQuality(item.quality)
-        }
+        item = updateAgedBrieItem(item)
       } else if (item.name === 'Backstage passes to a TAFKAL80ETC concert') {
-        item.sellIn = item.sellIn - 1;
-        item.quality = increaseQuality(item.quality)
-        if (item.sellIn < 10) {
-          item.quality = increaseQuality(item.quality)
-        }
-
-        if (item.sellIn < 5) {
-          item.quality = increaseQuality(item.quality)
-        }
-
-        if (item.sellIn < 0) {
-          item.quality = item.quality - item.quality;
-        }
+        item = updateBackstageItem(item)
       } else {
-        item.sellIn = item.sellIn - 1;
-        item.quality = decreaseQuality(item.quality)
-        if (item.sellIn < 0) {
-          item.quality = decreaseQuality(item.quality)
-        }
+        item = updateNormalItem(item)
       }
     }
 
     return this.items;
   }
+}
+
+const updateAgedBrieItem = (item) => {
+  item.sellIn = item.sellIn - 1;
+  item.quality = increaseQuality(item.quality)
+  if (item.sellIn < 0) {
+    item.quality = increaseQuality(item.quality)
+  }
+  return item
+}
+
+const updateBackstageItem = (item) => {
+  item.sellIn = item.sellIn - 1;
+  item.quality = increaseQuality(item.quality)
+  if (item.sellIn < 10) {
+    item.quality = increaseQuality(item.quality)
+  }
+
+  if (item.sellIn < 5) {
+    item.quality = increaseQuality(item.quality)
+  }
+
+  if (item.sellIn < 0) {
+    item.quality = item.quality - item.quality;
+  }
+
+  return item
+}
+
+const updateNormalItem = (item) => {
+  item.sellIn = item.sellIn - 1;
+  item.quality = decreaseQuality(item.quality)
+  if (item.sellIn < 0) {
+    item.quality = decreaseQuality(item.quality)
+  }
+  return item
 }
 
 const decreaseQuality = (quality) => {
